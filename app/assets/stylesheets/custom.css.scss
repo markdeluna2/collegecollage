@@ -1,0 +1,427 @@
+/* COLORS */
+$grey: #999999;
+$headfoot: #000000;
+$accents: #66A1D2;
+$headhover: #FFFFFF;
+$sidebarback: #FFFFFF;
+$contentback: #DDDDDD;
+$sidehover: #000000;
+
+/*MIXINS*/
+@mixin round($edge) {
+	-webkit-border-radius: $edge;
+	-khtml-border-radius: $edge;	
+	-moz-border-radius: $edge;
+	border-radius: $edge;
+}
+@mixin round-top-left($edge) {
+	-webkit-border-top-left-radius: $edge;
+	-khtml-border-top-left-radius: $edge;	
+	-moz-border-top-left-radius: $edge;
+	border-top-left-radius: $edge;
+}
+@mixin round-top-right($edge) {
+	-webkit-border-top-right-radius: $edge;
+	-khtml-border-top-right-radius: $edge;	
+	-moz-border-top-right-radius: $edge;
+	border-top-right-radius: $edge;
+}
+@mixin round-bottom-left($edge) {
+	-webkit-border-bottom-left-radius: $edge;
+	-khtml-border-bottom-left-radius: $edge;	
+	-moz-border-bottom-left-radius: $edge;
+	border-bottom-left-radius: $edge;
+}
+@mixin round-bottom-right($edge) {
+	-webkit-border-bottom-right-radius: $edge;
+	-khtml-border-bottom-right-radius: $edge;	
+	-moz-border-bottom-right-radius: $edge;
+	border-bottom-right-radius: $edge;
+}
+
+/* tools */
+.grey {
+	color: $grey;
+}
+.justify {
+	text-align: justify;
+}
+.pad {
+	padding: 70px 0px 20px 0px;
+}
+.sidepad {
+	padding: 30px 50px 20px 50px;
+}
+.indent {
+	text-indent:50px;
+}
+.border {
+	padding:2px;
+  border:2px solid black;
+
+}
+
+.round {
+ 		@include round(10px);
+}
+/* top-left rounded corner */
+.top-left-round {
+	@include round-top-left(10px);
+}
+/* top-right rounded corner */
+.top-right-round {
+	@include round-top-right(10px);
+}
+/* top-right rounded corner */
+/* bottom-left rounded corner */
+.bottom-left-round {
+	@include round-bottom-left(10px);
+}
+/* bottom-right rounded corner */
+.bottom-right-round {
+	@include round-bottom-right(10px);
+}	
+
+.center {
+	text-align: center;
+}
+/* Text */
+h1 {
+	text-align: center;
+  font-family: 'Miltonian', serif;
+  font-size: 77px;
+  font-style: normal;
+  font-weight: 400;
+  text-shadow: none;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+h2 {
+	font-family: 'Redressed', serif;
+	font-size: 35px;
+	line-height: 40px;
+}
+h3 {
+	font-family: 'Redressed', serif;
+	font-size: 20px;
+	line-height: 25px;
+}
+ 
+p {
+	font-family: 'Goudy Bookletter 1911', serif;
+	letter-spacing: 0.029em;
+	font-size: 15px;
+	line-height: 20px;
+}
+li {
+	font-family: 'Goudy Bookletter 1911', serif;
+	letter-spacing: 0.029em;
+	font-size: 15px;
+	line-height: 20px;
+}
+.special {
+	font-family: 'Redressed', serif;
+	font-size: 15px;
+	line-height: 20px;
+	
+}
+
+
+
+
+/* PICS */
+#containpic {
+	width: auto;
+	height: auto;
+	
+}
+#heart {
+	
+	text-align: right;
+	z-index: 400;
+	
+	
+}
+.listedpic {
+	float: left;
+	padding: 15px;
+	width: 300px;
+	height: 300px;
+	
+}
+
+#signup {
+	padding: 100px 20% 50px 20%;
+	
+}
+#signup p {
+	font-size: 25px;
+	line-height: 40px;
+}
+#signup_error_explanation {
+	float: left;
+}
+.signup_button {
+	padding: 15px;
+	background: #ffffff;
+	border: 2px solid #000000;
+	text-align: center;
+	position: relative;
+}
+
+
+ /* <!-- */
+  /* General styles */
+
+  body {
+      margin:0;
+      padding:0;
+      border:0;			/* This removes the border around the viewport in old versions of IE */
+      width:100%;
+      background: #000000;
+      min-width:600px;    /* Minimum width of layout - remove line if not required */
+						/* The min-width property does not work in old versions of Internet Explorer */
+	font-size:90%;
+
+  }
+  p {
+      margin:.4em 0 .8em 0;
+      padding:0;
+  }
+
+ 
+img {
+	padding: 2px;
+	border: 1px solid $grey;
+}
+
+
+/* Navigation */
+
+#nav {
+	background-color: $accents;
+	@include round-top-right(10px);
+	@include round-top-left(10px);
+	padding: 2px 4px;
+	float: left;
+	clear: none;
+	margin-left: -10px;
+	margin-top: 50px;
+}
+
+
+/* Header styles */
+
+
+.logo {
+	border:none;
+	padding: 5px 0 5px 10px;
+	float: left;
+}
+
+
+#header {
+      clear:both;
+      float:left;
+      width:100%;
+			background: #000000;		
+ 			p, h1, h2 {
+    		padding:.4em 15px 0 15px;
+      	margin:0;
+			}
+			ul {
+					margin-top: 0;
+					margin-bottom: 0;
+			    clear:left;
+			    float:left;
+			    width:100%;
+			    list-style:none;
+			    padding:0;
+					li {
+					    display:inline;
+					    list-style:none;
+					    margin:0;
+					    padding:0;
+
+					}
+					a {
+					    display:block;
+					    float:left;
+					    margin:0 0 0 1px;
+					    padding:3px 10px;
+					    text-align:center;
+					    color:#000;
+					    text-decoration:none;
+					    position:relative;
+							span {
+								display: block;
+							}
+							&:hover {
+								color: $headhover;
+							}
+					}
+			}
+}
+
+
+
+/* 'widths' sub menu */
+#layoutdims {
+	clear:both;
+	background:#eee;
+	border-top:4px solid #000;
+	margin:0;
+	padding:6px 15px !important;
+	text-align:right;
+	
+}
+/* column container */
+.colmask {
+	position:relative;		/* This fixes the IE7 overflow hidden bug and stops the layout jumping out of place */
+    clear:both;
+    float:left;
+      width:100%;			/* width of whole page */
+
+	overflow:hidden;	/* This chops off any overhanging divs */
+}
+/* 2 column left menu settings */
+
+.leftmenu {
+    background: $sidebarback;
+		
+		.colright {
+	      float:left;
+	      width:200%;
+				position:relative;
+				left:200px;
+	      background:$contentback;
+				border-left: 2px solid $accents;
+	  }
+		.col1wrap {
+	    	float:right;
+	    	width:50%;
+	    	position:relative;
+	    	right:200px;
+	    	padding-bottom:1em;
+		}
+		.col1 {
+	      margin:0 15px 0 215px;
+	    	position:relative;
+	    	right:100%;
+	    	overflow:hidden;
+		}
+		.col2 {
+      	float:left;
+      	width:170px;
+      	position:relative;
+      	right:185px;
+  }
+}
+   
+/* Footer styles */
+#footer {
+      clear:both;
+      float:left;
+      width:100%;
+			border-top:3px solid $accents;;
+			background: $headfoot;
+			position: relative; 
+			bottom: 0;
+  		p {
+      	padding:10px;
+      	margin:0;
+			}
+			a {
+				text-decoration: none;
+			}
+}
+  
+/* pics */
+
+/* Sidebar */
+.sidebar {
+	list-style: none;
+	
+	h2 {
+		text-align: center;
+		padding: 20px 0 0 0;
+	}
+	a {
+	    color: $sidehover;
+	    text-decoration:none;
+			&:hover {
+				color: #E9F2F9;
+			}
+	}
+}
+
+ul.sidebar {
+	margin-left: -25px;
+}
+
+
+
+/* Links */
+
+a {
+	color: $accents;
+  text-decoration: underline;
+	&:hover {
+	  color: #000000;
+		&:visited {
+			color: $accents;
+		}
+	}
+}
+
+
+
+
+
+
+
+/* ALERTS */ 
+.error, .alert, .notice, .success, .info {padding:0.8em;margin-bottom:1em;border:2px solid #ddd; margin-top: 15px;}
+.error, .alert {background:#fbe3e4;color:#8a1f11;border-color:#fbc2c4;}
+.notice {background:#fff6bf;color:#514721;border-color:#ffd324;}
+.success {background:#e6efc2;color:#264409;border-color:#c6d880;}
+.info {background:#d5edf8;color:#205791;border-color:#92cae4;}
+.error a, .alert a {color:#8a1f11;}
+.notice a {color:#514721;}
+.success a {color:#264409;}
+.info a {color:#205791;} 
+
+/* Comments */
+ul.comments {
+	list-style: none;
+	width: 500px;
+	margin: 0 auto;
+	padding:0; 
+	li{
+		border-top: 1px solid $grey;
+		padding: 5px;
+		}
+}
+
+.newcomment {
+	margin: 0 auto;
+	width: 500px;
+	text-align: center;	
+}
+.delete {
+	text-align: right;
+	float: right;
+	clear: none;
+	height: 12px;
+}
+.time {
+	text-align: left;
+	clear: none;
+	color: $grey;
+	height: 12px;
+}
+/* SUBMITS */
+
+

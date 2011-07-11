@@ -1,0 +1,26 @@
+<% if signed_in?%>
+		<h1><%= @list %> Collage</h1>
+
+		
+<%= paginate @photos %>
+		
+  
+	<% unless @photos.nil?%>
+		<% @photos.each do |photo| %>
+		
+    		<div class="listedpic">
+		    <center><%= link_to image_tag (photo.image_url(:collage).to_s), photo %></center>
+				</div>
+	
+		<% end %>
+		
+
+		
+		<%else%>
+		<h1>There are no photos yet!</h1>
+		<%end%>
+<%else%>
+<%= render 'shared/signin'%>
+<%end%>
+
+

@@ -1,0 +1,17 @@
+-if signed_in?
+	%h2{:class=>"sidebar"} Collages
+	%ul{:class => "sidebar"}
+		%p
+			%li= link_to 'Favorite Users', relationship_path(current_user)
+			%li= link_to 'Hearts', favorite_path(current_user)
+			%li= link_to college, root_path
+			%h3 Schools
+			-schools.each do |school_id|
+				%li=link_to School.find(school_id).name, School.find(school_id)
+			%h3 Dorms
+			-dorms.each do |dorm_id|
+				-unless Dorm.find(dorm_id).photos.empty?
+					%li= link_to Dorm.find(dorm_id).name, Dorm.find(dorm_id)
+			%h3 Tags
+			-tags.each do |tag|
+				%li= link_to tag.name, tag
