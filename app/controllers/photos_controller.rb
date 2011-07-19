@@ -48,7 +48,10 @@ class PhotosController < ApplicationController
                        :comment=>params[:photo][:comment],
                        :user_id=> current_user.id, 
                        :image=> params[:photo][:image], 
-                       :tag_id=>params[:photo][:tag_id]
+                       :tag_id=>params[:photo][:tag_id], 
+                       :latitude=>params[:photo][:latitude], 
+                       :longitude=>params[:photo][:longitude],
+                       :address=>params[:photo][:address]
                        )
 
     respond_to do |format|

@@ -7,7 +7,7 @@ gem "carrierwave"
 gem 'kaminari'
 gem 'redcarpet'
 gem "haml"
-
+gem 'geocoder'  
 gem 'sqlite3', '1.3.3'
 
 # Asset template engines

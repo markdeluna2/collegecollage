@@ -2,17 +2,16 @@
 <p id="notice"><%= notice %></p>
 <center>
 	<h1><%= @user.first_name %> <%= @user.last_name %></h1>
-	<h3><%= college %>, <%= School.find(@user.school_id).name %> <%= @user.year %></h3>
-	<p><%= pluralize(@user.followers.count,  "person") %> following</p>
+	<p class="school"><%= college %>, <%= School.find(@user.school_id).name %> <%= @user.year %>, <%= pluralize(@user.followers.count,  "follower") %></h1>
 </center>
 
 
-<%= render 'follow_form' %>
+<%= render 'follow_form'%>
 
 <%= render 'shared/index' %>
 
 
 
 <%else%>
-<%= render 'shared/signin'%>
+	<%= render 'shared/signin'%>
 <%end%>

@@ -1,6 +1,5 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :user_id, :title, :image, :comment, :tag_id
-  
+  attr_accessible :user_id, :image, :comment, :tag_id, :latitude, :longitude, :address
   
   belongs_to :user
   belongs_to :college
@@ -12,14 +11,16 @@ class Photo < ActiveRecord::Base
   has_one :tag
   
   
-  validates :title, :presence     => true, 
-                    :length       => { :within => 2..40 }
+  #validates :title, :presence     => true, 
+   #                 :length       => { :within => 2..40 }
   validates :comment, :presence     => true, 
                     :length       => { :within => 2..141 }    
   validates :image, :presence     => true 
   validates :user_id, :presence     => true 
   validates :tag_id, :presence     => true                
   
+  geocoded_by :address 
+  after_validation :geocode, :if => :address_changed?  
   
   mount_uploader :image, ImageUploader
   

@@ -3,11 +3,12 @@ class CreatePhotos < ActiveRecord::Migration
     create_table :photos do |t|
       t.string :title
       t.integer :user_id
-      t.integer :width
-      t.integer :height
+      t.float :latitude
+      t.float :longitude
+      t.string :address
       t.string :camera
       t.string :comment
-      t.integer :file_size
+      
 
       t.timestamps
     end

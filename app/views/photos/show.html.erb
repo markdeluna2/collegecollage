@@ -1,12 +1,15 @@
 <% if signed_in?%>
 <p id="notice"><%= notice %></p>
+ 
 <center>
 
 <h1><%= @photo.title %></h1>
-<%= image_tag @photo.image_url.to_s %>
+<%= image_tag @photo.image_url.to_s, :class=> "photo" %> <br>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x240&sensor=false&zoom=16&markers=#{@photo.latitude}%2C#{@photo.longitude}", :class=> "map" %>  
 <p><%= @photo.comment%></p>
-<%= render 'favorite_form' , :id=>"heart"%>
 
+<%= render 'favorite_form' , :id=>"heart"%>
+ 
 
 <p>  
   <%= punctuate(@photo.comment)%> 
@@ -46,7 +49,7 @@
 	<% end %>
 	
 	</ul>
-	
+	   
 	<%=render 'comments/form'%>
 	
 	

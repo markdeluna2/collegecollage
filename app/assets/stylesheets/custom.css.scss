@@ -3,9 +3,9 @@ $grey: #999999;
 $headfoot: #000000;
 $accents: #66A1D2;
 $headhover: #FFFFFF;
-$sidebarback: #FFFFFF;
+$sidebarback: #000000;
 $contentback: #DDDDDD;
-$sidehover: #000000;
+$sidehover: #FFFFFF;
 
 /*MIXINS*/
 @mixin round($edge) {
@@ -88,7 +88,7 @@ $sidehover: #000000;
 /* Text */
 h1 {
 	text-align: center;
-  font-family: 'Miltonian', serif;
+  font-family: 'Nova Square', cursive;
   font-size: 77px;
   font-style: normal;
   font-weight: 400;
@@ -252,7 +252,7 @@ img {
 					    margin:0 0 0 1px;
 					    padding:3px 10px;
 					    text-align:center;
-					    color:#000;
+					    color:#000000;
 					    text-decoration:none;
 					    position:relative;
 							span {
@@ -290,14 +290,17 @@ img {
 
 .leftmenu {
     background: $sidebarback;
+
 		
 		.colright {
 	      float:left;
 	      width:200%;
 				position:relative;
 				left:200px;
+				
 	      background:$contentback;
-				border-left: 2px solid $accents;
+				border: 2px solid $accents;
+				
 	  }
 		.col1wrap {
 	    	float:right;
@@ -305,12 +308,14 @@ img {
 	    	position:relative;
 	    	right:200px;
 	    	padding-bottom:1em;
+	
 		}
 		.col1 {
 	      margin:0 15px 0 215px;
 	    	position:relative;
 	    	right:100%;
 	    	overflow:hidden;
+	
 		}
 		.col2 {
       	float:left;
@@ -325,7 +330,7 @@ img {
       clear:both;
       float:left;
       width:100%;
-			border-top:3px solid $accents;;
+		
 			background: $headfoot;
 			position: relative; 
 			bottom: 0;
@@ -343,6 +348,7 @@ img {
 /* Sidebar */
 .sidebar {
 	list-style: none;
+	color: $sidehover;
 	
 	h2 {
 		text-align: center;
@@ -352,7 +358,7 @@ img {
 	    color: $sidehover;
 	    text-decoration:none;
 			&:hover {
-				color: #E9F2F9;
+				color: $sidehover;
 			}
 	}
 }
@@ -423,5 +429,24 @@ ul.comments {
 	height: 12px;
 }
 /* SUBMITS */
+/* users view */
+.school {
+	font-size: 20px;
+	line-height: 25px;
+	margin-top: -35px;
+}
 
-
+#favorite_form {
+	margin-left: 400px;
+	margin-top: -45px;
+	width: 30px;
+	clear: none;
+}
+/* SHOW PHOTO */
+.mfap {
+	float: left;
+	clear: none;
+}
+.photo {
+	margin: 0 auto;
+}
