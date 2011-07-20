@@ -2,8 +2,11 @@
 <html>
 	<head>
 	  <title>Campus Collage</title>
-	  <%= stylesheet_link_tag "application" %>
-		
+	  <%= stylesheet_link_tag "custom" %>
+		<!--[if lt IE 7]>
+		  <%= stylesheet_link_tag "ie6" %>
+		<![endif]-->
+	
 		<%= javascript_include_tag "application" %>
 		<%= yield(:head)%>
 	  <%= csrf_meta_tag %>
@@ -29,42 +32,67 @@
 		
 		
 		
-		<div class="colmask leftmenu">
-			
+		 <div id="container">
 			 <nav id="topNav">  
                 <ul>  
-                    <li><a href="#" title="Nav Link 1">Nav Link 1</a></li>  
-                <li>  
-                    <a href="#" title="Nav Link 1">Nav Link 2  
-                    <ul>  
-                        <li><a href="#" title="Sub Nav Link 1">Sub Nav Link 1</a></li>  
-                        <li><a href="#" title="Sub Nav Link 2">Sub Nav Link 2</a></li>  
-                        <li><a href="#" title="Sub Nav Link 3">Sub Nav Link 3</a></li>  
-                        <li><a href="#" title="Sub Nav Link 4">Sub Nav Link 4</a></li>  
-                        <li class="last"><a href="#" title="Sub Nav Link 5">Sub Nav Link 5</a></li>  
-                    </ul>  
-                </li>  
-                <li><a href="#" title="Nav Link 1">Nav Link 3</a></li>  
-                <li><a href="#" title="Nav Link 1">Nav Link 4</a></li>  
-                <li><a href="#" title="Nav Link 1">Nav Link 5</a></li>  
+                    <li><%= link_to '(logo)', root_path %></li> 
+ 								<% if signed_in?%>
+								<li><%= link_to 'Upload', upload_path %></li>
+								<li><%= link_to 'Sign Out', signout_path, :method => :delete %></li>
+                <li><%= link_to 'Following', relationship_path(current_user)%></li>  
+                <li><%= link_to 'Hearts', favorite_path(current_user)%></li>  
+                <li><%= link_to 'Tags', '#' %>
+									<ul class="wide-nav">
+									<% tags.each_with_index do |tag, index|%>
+											<% if index==tags.size-1 %>
+                    		<li class="last"><%=link_to tag.name, tag %></li>
+											<% else %>
+	                    	<li><%=link_to tag.name, tag %></li>
+											<% end %>
+										<% end %>
+										</ul>
+								</li>  
+                <li><%=link_to "Dorms", current_user.dorm %>
+									<ul class="wide-nav">
+										<% dorms.each_with_index do |dorm_id, index|%>
+												<% if index==schools.size-1 %>
+                      		<li class="last"><%=link_to Dorm.find(dorm_id).name, Dorm.find(dorm_id) %></li>
+												<% else %>
+	                      	<li><%=link_to Dorm.find(dorm_id).name, Dorm.find(dorm_id) %></li>
+												<% end %>
+											<% end %>
+                  </ul>
+								</li>
+  							<li><%= link_to 'Schools', current_user.school%>
+										<ul>
+											<% schools.each_with_index do |school_id, index|%>
+												<% if index==schools.size-1 %>
+                        	<li class="last"><%=link_to School.find(school_id).name, School.find(school_id) %></li>
+												<% else %>
+                        	<li><%=link_to School.find(school_id).name, School.find(school_id) %></li>
+												<% end %>
+											<% end %>
+                    </ul>
+								</li>  
+								<% else %>
+									<li><%=link_to 'Sign In!', signin_path%>
+								<% end %>
             </ul>  
         </nav>
-		    <div class="colright bottom-left-round">
-		        <div class="col1wrap">
-		            <div class="col1">
-		                <!-- Main Column start -->
+
+
+
+		   
+		        <div id="center-stage">
 										<% flash.each do |key, value| %>
 						          <div class="flash <%= key %>"><%= value %></div>
 						        <% end %>
 		                <%= yield %>
-										<!-- Main Column end -->
-		            </div>
 		        </div>
-		        <div class="col2">
-							<%= render 'layouts/sidebar' %>
-		        </div>
-		    </div>
+						<div class="clearfooter"></div>
 		</div>
+		        
+		    
 		<div id="footer">
 		    <%= render 'layouts/footer' %>
 		</div>
