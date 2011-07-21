@@ -1,4 +1,4 @@
-<% if signed_in?%>	
+
 	<h1>New photo</h1>
 
 	<%= form_for([@user, @photo], :html => {:multipart => true }) do |f| %>
@@ -30,6 +30,4 @@
 	    <%= f.submit %>
 	  </div>
 	<% end %>
-<%else%>
-<%= render 'shared/signin'%>
-<%end%>
+

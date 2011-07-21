@@ -11,6 +11,7 @@ class TagsController < ApplicationController
       @tag=Tag.find(params[:id])
       @photos=College.find(current_user.college_id).photos.where(:tag_id=>@tag.id).page(params[:page]).per(20)
       @list=@tag.name
+      @newphoto=Photo.new
     end
   end
   

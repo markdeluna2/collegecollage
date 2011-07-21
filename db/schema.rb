@@ -48,12 +48,10 @@ ActiveRecord::Schema.define(:version => 20110706223237) do
   end
 
   create_table "photos", :force => true do |t|
-    t.string   "title"
     t.integer  "user_id"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "address"
-    t.string   "camera"
     t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -7,6 +7,7 @@ class DormsController < ApplicationController
     @dorm=Dorm.find(params[:id])
     @photos=@dorm.photos.order("created_at DESC").page(params[:page]).per(20)
     @list=@dorm.name  
+    @newphoto=Photo.new
     end
   end
 

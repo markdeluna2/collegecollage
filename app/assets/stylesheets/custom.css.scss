@@ -185,7 +185,7 @@ li {
 	      border:0;	
 	      width:100%;
 	      background: $sidebarback;
-	      min-width:600px; 
+				color: #AAA;
 				p {
 			      margin:.4em 0 .8em 0;
 			      padding:0;
@@ -198,20 +198,23 @@ img {
 	padding: 2px;
 	border: 1px solid $grey;
 }
+.zoom {
+    -webkit-transition: -webkit-transform .05s linear;
+		-o-transition: -webkit-transform .05s linear;
+		-moz-transition: -moz-transform .05s linear;
+		float: left;
+		&:hover {
+			-webkit-transform: scale(1.1);
+			-o-transform: scale(1.1); 
+			-moz-transform: scale(1.1); 
+			-moz-transform-origin: center center;
+			position: relative;
+		
+			z-index: 5; 
+		}
+}
 
 
-/* Navigation */
-/*
-#nav {
-	background-color: $accents;
-	@include round-top-right(10px);
-	@include round-top-left(10px);
-	padding: 2px 4px;
-	float: left;
-	clear: none;
-	margin-left: -10px;
-	margin-top: 50px;
-}*/
 
 
 /* Header styles */
@@ -226,11 +229,6 @@ img {
 
 
 
-/* 'widths' sub menu */
-
-/* column container */
-
-/* 2 column left menu settings */
 
 
    
@@ -357,8 +355,23 @@ ul.comments {
 	margin: 0 auto;
 }
 
-
-
+input[type=text], input[type=password] {
+    @include round(4px);
+    border:1px solid $grey;
+    padding:5px;
+		
+}
+ul.signin {
+	color: #FFF;
+	padding: 10px 0 10px 0;
+	
+}
+.signup {
+	background-color: $sidebarback;
+	color: #AAA;
+	position: relative;
+	
+}
                                                                  /* DROP DOWN */
 
 

@@ -1,0 +1,14 @@
+- if signed_in?
+	#notice
+		%p
+			=notice
+	%center
+		%h1=@user.first_name  = @user.last_name 
+		.school
+			%p
+				=college+", "+ School.find(@user.school_id).name+" "+@user.year.to_s+", " + pluralize(@user.followers.count, "follower")
+	= render 'follow_form'
+	= render 'shared/index' 
+-else
+	= render 'sharedsignin'
+

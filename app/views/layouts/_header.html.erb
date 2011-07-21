@@ -1,0 +1,101 @@
+<ul>  
+    <li><%= link_to '(logo)', root_path %></li> 
+<% if signed_in? %>
+<li><%= link_to 'Upload', upload_path %>
+	<ul class="wide-nav signin long">
+			<%= form_for([params[:user], @newphoto], :html => {:multipart => true }) do |f| %>
+			  <% if @newphoto.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(@newphoto.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+			      <ul>
+			      <% @newphoto.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+			  <div class="field">
+			    <%= f.label :address %><br />
+			    <%= f.text_field :address, :size=> "20" %>
+			  </div>
+			  <div class="field">
+			    <%= f.label :comment %><br />
+			    <%= f.text_field :comment, :size=> "20"  %>
+			  </div>
+				<%= f.collection_select(:tag_id, Tag.all, :id, :name, :prompt => "Tag") %>
+				<div class="field">
+			    <%= f.file_field :image, :class=>"boob" %>
+			  </div>
+
+
+			  <div class="actions">
+			    <%= f.submit %>
+			  </div>
+			<% end %>
+	</ul>
+</li>
+<li><%= link_to 'Sign Out', signout_path, :method => :delete %></li>
+<li><%= link_to 'Following', relationship_path(current_user)%></li>  
+<li><%= link_to 'Hearts', favorite_path(current_user)%></li>  
+<li><%= link_to 'Tags', '#' %>
+	<ul class="wide-nav short">
+	<% tags.each_with_index do |tag, index|%>
+			<% if index==tags.size-1 %>
+    		<li class="last"><%=link_to tag.name, tag %></li>
+			<% else %>
+      	<li><%=link_to tag.name, tag %></li>
+			<% end %>
+		<% end %>
+		</ul>
+</li>  
+<li><%=link_to "Dorms", current_user.dorm %>
+	<ul class="wide-nav short">
+		<% dorms.each_with_index do |dorm_id, index|%>
+				<% if index==schools.size-1 %>
+      		<li class="last"><%=link_to Dorm.find(dorm_id).name, Dorm.find(dorm_id) %></li>
+				<% else %>
+        	<li><%=link_to Dorm.find(dorm_id).name, Dorm.find(dorm_id) %></li>
+				<% end %>
+			<% end %>
+  </ul>
+</li>
+<li><%= link_to 'Schools', current_user.school%>
+		<ul class="short">
+			<% schools.each_with_index do |school_id, index|%>
+				<% if index==schools.size-1 %>
+        	<li class="last"><%=link_to School.find(school_id).name, School.find(school_id) %></li>
+				<% else %>
+        	<li><%=link_to School.find(school_id).name, School.find(school_id) %></li>
+				<% end %>
+			<% end %>
+    </ul>
+</li>
+<%unless current_user.notifications.empty?%>  
+	<li>
+	<%= link_to current_user.notifications.count, '/notifications'%>
+	</li>
+<%end%>
+<% else %>
+	<li><%=link_to 'Sign In!', signin_path%>
+		<ul class="wide-nav signin short">
+				<%= form_for(:session, :url => sessions_path) do |f| %>
+				  <div class="field">
+				    <%= f.label :email %><br />
+				    <%= f.text_field :email, :size=> "20" %>
+				  </div>
+				  <div class="field">
+				    <%= f.label :password %><br />
+				    <%= f.password_field :password, :size=> "20" %>
+				  </div>
+				  <div class="actions">
+				    <%= f.submit "Sign in" %>
+				  </div>
+					
+				<% end %>
+		</ul>
+	</li>
+<% end %>
+</ul>
+
+

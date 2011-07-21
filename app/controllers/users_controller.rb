@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user,   :only => :destroy
   before_filter :authenticate, :except => [:show, :new, :create]
-  
+ 
  
   def index
     @users = User.all
@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @photos=@user.photos.order("created_at DESC").page(params[:page]).per(20)
     @list="My"
+    @newphoto=Photo.new
   end
 
   def new
@@ -44,6 +45,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @newphoto=Photo.new
          @user = User.find(params[:id])
          if @user.update_attributes(params[:user])
            flash[:success] = "Profile updated."

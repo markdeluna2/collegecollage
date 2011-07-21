@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   # GET /notifications.xml
   def index
     @notifications = current_user.notifications
- 
+    @newphoto=Photo.new
 
     respond_to do |format|
       format.html # index.html.erb

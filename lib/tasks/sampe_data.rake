@@ -90,6 +90,7 @@ end
 
 def make_photos
 
+  
    #Photo.create!(:user_id=>1, :comment=> "Look at what happened!", :image=>ImageUploader.new.store!(File.open("/Users/juliemoody/Desktop/lost_EWW.jpg")))
   
 end

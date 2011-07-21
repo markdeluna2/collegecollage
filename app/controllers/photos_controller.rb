@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
   
   def index
     @photos = Photo.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       #format.xml  { render :xml => @photos }
@@ -18,7 +18,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     @comment = Comment.new(params[:comment]) if signed_in?
     @comments = @photo.comments
-
+    @newphoto=Photo.new
     respond_to do |format|
       format.html # show.html.erb
       #format.xml  { render :xml => @photo }
@@ -29,7 +29,7 @@ class PhotosController < ApplicationController
   # GET /photos/new.xml
   def new
     @photo = Photo.new
-
+    @newphoto=Photo.new
     respond_to do |format|
       format.html # new.html.erb
       #format.xml  { render :xml => @photo }
@@ -44,7 +44,7 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.xml
   def create
-    @photo = Photo.new(:title=>params[:photo][:title],
+    @photo = Photo.new(
                        :comment=>params[:photo][:comment],
                        :user_id=> current_user.id, 
                        :image=> params[:photo][:image], 

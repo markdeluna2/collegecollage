@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	  <title>Campus Collage</title>
+	  <title>College Collage</title>
 	  <%= stylesheet_link_tag "custom" %>
 		<!--[if lt IE 7]>
 		  <%= stylesheet_link_tag "ie6" %>
@@ -34,51 +34,8 @@
 		
 		 <div id="container">
 			 <nav id="topNav">  
-                <ul>  
-                    <li><%= link_to '(logo)', root_path %></li> 
- 								<% if signed_in?%>
-								<li><%= link_to 'Upload', upload_path %></li>
-								<li><%= link_to 'Sign Out', signout_path, :method => :delete %></li>
-                <li><%= link_to 'Following', relationship_path(current_user)%></li>  
-                <li><%= link_to 'Hearts', favorite_path(current_user)%></li>  
-                <li><%= link_to 'Tags', '#' %>
-									<ul class="wide-nav">
-									<% tags.each_with_index do |tag, index|%>
-											<% if index==tags.size-1 %>
-                    		<li class="last"><%=link_to tag.name, tag %></li>
-											<% else %>
-	                    	<li><%=link_to tag.name, tag %></li>
-											<% end %>
-										<% end %>
-										</ul>
-								</li>  
-                <li><%=link_to "Dorms", current_user.dorm %>
-									<ul class="wide-nav">
-										<% dorms.each_with_index do |dorm_id, index|%>
-												<% if index==schools.size-1 %>
-                      		<li class="last"><%=link_to Dorm.find(dorm_id).name, Dorm.find(dorm_id) %></li>
-												<% else %>
-	                      	<li><%=link_to Dorm.find(dorm_id).name, Dorm.find(dorm_id) %></li>
-												<% end %>
-											<% end %>
-                  </ul>
-								</li>
-  							<li><%= link_to 'Schools', current_user.school%>
-										<ul>
-											<% schools.each_with_index do |school_id, index|%>
-												<% if index==schools.size-1 %>
-                        	<li class="last"><%=link_to School.find(school_id).name, School.find(school_id) %></li>
-												<% else %>
-                        	<li><%=link_to School.find(school_id).name, School.find(school_id) %></li>
-												<% end %>
-											<% end %>
-                    </ul>
-								</li>  
-								<% else %>
-									<li><%=link_to 'Sign In!', signin_path%>
-								<% end %>
-            </ul>  
-        </nav>
+                <%= render "layouts/header" %>
+       </nav>
 
 
 
@@ -114,9 +71,23 @@
                     });  
       
                     //hide submenus on exit  
-                    $(this).mouseleave(function() {  
-                        $(this).find("ul").stop(true, true).slideUp();  
-                    });  
+                    $(this).mouseleave(function() 
+										{  
+											var menu = this;
+											setTimeout(function()
+											{
+                        $(menu).find("ul.short").stop(true, true).slideUp(); 
+											}, 500);
+                   	});
+
+										$(this).mouseleave(function() 
+										{  
+											var menu = this;
+											setTimeout(function()
+											{
+                        $(menu).find("ul.long").stop(true, true).slideUp(); 
+											}, 1500);
+                   	});  
                 }  
             });  
         })(jQuery);  

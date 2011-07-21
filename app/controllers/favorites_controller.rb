@@ -23,7 +23,7 @@ class FavoritesController < ApplicationController
       photo_ids = %(SELECT photo_id FROM favorites
                         WHERE user_id = :user_id)
       @photos= Photo.where("id IN (#{photo_ids})",{ :user_id => current_user.id }).page(params[:page]).per(20)
-      
+      @newphoto=Photo.new
       @list="Favorites"
     end
   end

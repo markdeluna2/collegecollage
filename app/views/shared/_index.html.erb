@@ -9,7 +9,7 @@
 		<% @photos.each do |photo| %>
 		
     		<div class="listedpic">
-		    <center><%= link_to image_tag (photo.image_url(:collage).to_s), photo %></center>
+		    <center><%= link_to image_tag (photo.image_url(:collage).to_s), photo, :class=> "zoom" %></center>
 				</div>
 	
 		<% end %>

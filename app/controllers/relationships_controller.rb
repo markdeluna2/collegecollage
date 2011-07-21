@@ -5,6 +5,7 @@ class RelationshipsController < ApplicationController
     if signed_in?
       @photos = current_user.feed.page(params[:page]).per(20)
       @list='Favorites'
+      @newphoto=Photo.new
     end
   end
   
